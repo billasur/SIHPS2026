@@ -74,7 +74,7 @@ def scrape_sih():
 def root():
     return {"status": "healthy", "service": "SIH 2026 Backend", "endpoints": ["/problems", "/sync"]}
 
-@app.post("/sync")
+@app.api_route("/sync", methods=["GET", "POST"])
 def trigger_sync(background_tasks: BackgroundTasks):
     background_tasks.add_task(scrape_sih)
     return {"message": "Scraping job started in the background."}
