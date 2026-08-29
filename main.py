@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from bs4 import BeautifulSoup
 import requests
 from pymongo import MongoClient
+import os
 
 app = FastAPI()
 
