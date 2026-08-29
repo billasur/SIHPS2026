@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-surface: #ffffff;
+  --color-ink: #111111;
+  --color-border: #e2e2e2;
+  --color-muted: #777777;
+  --color-accent: #000000;
+  --color-hover: #f7f7f7;
+  --color-tag: #f0f0f0;
+  --color-status-review: #111111;
+  --color-status-progress: #2563eb;
+  --color-status-discarded: #999999;
+  --color-status-shortlisted: #059669;
+  --font-sans: 'Inter', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+}
+
+html {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--color-ink);
+  background: var(--color-surface);
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  min-height: 100vh;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #444;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+
+/* Selection */
+::selection {
+  background: var(--color-ink);
+  color: var(--color-surface);
+}
+.dark ::selection {
+  background: #e5e5e5;
+  color: #111;
+}
+
+/* Custom animations */
+@keyframes slideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slideInDown {
+  from { transform: translateY(-8px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.animate-slideUp {
+  animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.15s ease-out forwards;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slideInDown {
+  animation: slideInDown 0.15s ease-out forwards;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Focus visible outline */
+*:focus-visible:not(.outline-none) {
+  outline: 2px solid var(--color-ink);
+  outline-offset: -2px;
+}
+.dark *:focus-visible:not(.outline-none) {
+  outline-color: #888;
+}
+
+/* Checkbox styling */
+input[type="checkbox"] {
+  accent-color: var(--color-ink);
+  cursor: pointer;
+}
+.dark input[type="checkbox"] {
+  accent-color: #e5e5e5;
+}
+
+/* Selected row override for text colors */
+.sih-selected-row span,
+.sih-selected-row button {
+  color: #ffffff !important;
+}
+.dark .sih-selected-row span,
+.dark .sih-selected-row button {
+  color: #ffffff !important;
+}
+
+/* Fix category pill background to contrast against the white text in selected row */
+.sih-selected-row .sih-category-pill {
+  background-color: #333333 !important;
+  border: 1px solid #555555;
+}
+.dark .sih-selected-row .sih-category-pill {
+  background-color: #1f2937 !important;
+  border: 1px solid #374151;
+}
