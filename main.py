@@ -69,6 +69,11 @@ def scrape_sih():
         }
         
         collection.update_one({"ps_number": ps_number}, {"$set": ps_data}, upsert=True)
+@app.get("/")
+@app.head("/")
+def root():
+    return {"status": "healthy", "service": "SIH 2026 Backend", "endpoints": ["/problems", "/sync"]}
+
 @app.post("/sync")
 def trigger_sync(background_tasks: BackgroundTasks):
     background_tasks.add_task(scrape_sih)

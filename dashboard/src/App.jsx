@@ -10,7 +10,7 @@ import { useLocalStorageMap } from './hooks/useLocalStorageState'
 import { useDarkMode } from './hooks/useDarkMode'
 import * as XLSX from 'xlsx'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+const API_URL = (import.meta.env.VITE_API_URL || 'http://localhost:8000').replace(/\/+$/, '')
 function getQueryParams() {
   const params = new URLSearchParams(window.location.search)
   return {
